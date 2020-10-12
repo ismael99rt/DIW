@@ -3,7 +3,7 @@
 //Crear conexión
     $servername = "fdb28.awardspace.net";
     $username = "3598790_cdpjosecabrera";
-    $password = "trebujena2020";
+    $password = "Trebujena2020";
     $dbname = "3598790_cdpjosecabrera";
 
     $conn = new mysqli($servername, $username,$password,$dbname);
@@ -19,7 +19,9 @@
     $correo2=$_POST["email2"];
     $clave="";
     $correo="";
-    $token="0";
+    $bloqueado=1;
+    $token = md5( rand(0,1000) );
+    $clavecifrada=md5($clave);
 
     if($correo1==$correo2){
         $correo=$correo1;
@@ -27,38 +29,48 @@
 
         if($pass1==$pass2) {
             $clave=$pass1;
-            $clavecifrada=md5($clave);
 
-            //Envío de correo
-            $asunto="Activacion de cuenta | DIW ";
-            $cuerpo="¡Hola! Te damos la bienvenida a la web de DIW. Para poder activar su cuenta, haga clic en el siguiente enlace: ";
-            $headers = "MIME-Version: 1.0\r\n"; 
-            $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
-            $headers = 'De: (soporte@ismael2daw)' . "\r\n";
-            $headers = 'Datos de su cuenta :' . "\r\n";
-            $headers = '--------------------------' . "\r\n";
-            $headers = 'Usuario : '.$usuario.' ' ."\r\n";
-            $headers = 'Clave : '.$clavecifrada.' ' ."\r\n";
-            mail($destinatario,$asunto,$cuerpo,$headers);
-            //Establecer conexión
-            if(isset($_POST["submit"])) {
-                $conexion=mysqli_connect($servername, $username, $password, $dbname) or
-                die("Problemas con la conexión");
+             //Pasamos al envío del email y datos a la base de datos si se cumplen todas las condiciones
+                    
+                    //Envío de correo
+                    $para      = $correo;
+                    $titulo    = 'Activación de cuenta Proyecto DIW';
+                    $mensaje = '<html>'.
+                        '<head><title>Activación de cuenta - Proyecto DIW</title></head>'.
+                        '<body><h1>Bienvenido al proyecto de DIW</h1>'.
+                        $usuario. ', te damos la bienvenida al proyecto de Desarrollo de Interfaces de 2 DAW. Para poder activar su cuenta, haga clic en el enlace: '.
+                        '<hr>'.
+                        '<b>Enlace de activación :</b>'.
+                        '<br>'.
+                        'http://www.ismael2daw.es/Registro/verify.php?email='.$correo.'&token='.$token.
+                        '<br>'.
+                        '<h3>Datos de su cuenta </h3>'.
+                        '<br>'.
+                        'Usuario: '. $usuario.
+                        '<br>'.
+                        'Contraseña: '. $clavecifrada.
+                        '<br>'.
+                        '</body>'.
+                        '</html>';
+                    $cabeceras = 'MIME-Version: 1.0' . "\r\n";
+                    $cabeceras .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+                    $cabeceras .= 'De: Ismael RT';
+                    mail($para, $titulo, $mensaje, $cabeceras); //Envío de email
 
-                mysqli_query($conexion,"INSERT INTO tabladiw (usuario,password,correo,token) VALUES
-                       ('$usuario','$clavecifrada','$correo',$token)");
+                    //Establecer conexión
+                    if(isset($_POST["submit"])) {
+                        $conexion=mysqli_connect($servername, $username, $password, $dbname) or
+                        die("Problemas con la conexión");
+
+                        mysqli_query($conexion,"INSERT INTO tabladiw (usuario,password,correo,bloqueado,token) VALUES
+                            ('$usuario','$clavecifrada','$correo','$bloqueado','$token')");
 
             
-            mysqli_close($conexion);
-            echo "Registro realizado con éxito.";
-    }
+                    mysqli_close($conexion);
+                    echo "Registro realizado con éxito.";
+                    }
         }
-    } else{
-        echo "Las claves son distintas, pruebe de nuevo";
-    }
+            
+    } 
     
-    
-
-
-
 ?>
