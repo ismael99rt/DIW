@@ -21,7 +21,6 @@
     $correo="";
     $bloqueado=1;
     $token = md5( rand(0,1000) );
-    $clavecifrada=md5($clave);
 
     if($correo1==$correo2){
         $correo=$correo1;
@@ -29,6 +28,7 @@
 
         if($pass1==$pass2) {
             $clave=$pass1;
+            $clavecifrada=md5($clave);
 
              //Pasamos al envío del email y datos a la base de datos si se cumplen todas las condiciones
                     

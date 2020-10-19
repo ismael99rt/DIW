@@ -1,11 +1,23 @@
-<?php
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+    <?php
 
     //Crear conexión
-    include("conexion.php");
-    $servername = "fdb28.awardspace.net";
+    /*$servername = "fdb28.awardspace.net";
     $username = "3598790_cdpjosecabrera";
     $password = "Trebujena2020";
-    $dbname = "3598790_cdpjosecabrera";
+    $dbname = "3598790_cdpjosecabrera";*/
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "diw";
 
     // Create connection
     $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -14,28 +26,29 @@
       die("Connection failed: " . $conn->connect_error);
     }
 
-    $usuario=$_POST["usernick"];
-    $clave=md5($_POST["password"]);
-    /*
-    $sql="SELECT * FROM tabladiw WHERE usuario = '$usuario' AND password = '$clave'";
+    $usuario=$_POST["nombre"];
+    $clave=$_POST["password"];
+    $clavecifrada= md5($clave);
+    $sql = "SELECT usuario FROM tabladiw WHERE usuario LIKE'$usuario' and password LIKE'$contraseñaCifrada'and bloqueado=0";
+    //$sql = "SELECT nombre FROM usuarios WHERE nombre='$nombre' and password='$contraseñaCifrada'and  bloqueado=0";
 
-    if (mysqli_query($conn, $sql)) {
-        echo "Adelante";
+    $result = $conn->query($sql);
+
+    $row = $result->fetch_assoc();
+
+    if ($result->num_rows > 0) {
+        echo "Bienvenido, $usuario";
     } else {
-        echo "Las credenciales son incorrectas. Por favor, inténtelo de nuevo.";
+        echo "Credenciales incorrectas";
+        echo "<br>";
+        echo $usuario;
+        echo $clavecifrada;
+        echo "<form action=formulario.html>
+        <input type=submit></form>";
+
+        exit;
     }
-    mysqli_close($conn);*/
-    $sql = mysqli_query("SELECT * FROM tabladiw WHERE usuario = '$usuario' and password = '$clave'");
-    $row = mysqli_num_rows($sql);
-
-    if($row!=null){
-        echo "Adelante";
-    } else {
-        echo "Credenciales incorrectas. Inténtelo de nuevo";
-    }
-
-
-
-
-
+    
 ?>
+</body>
+</html>
