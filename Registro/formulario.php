@@ -1,14 +1,14 @@
 <DOCTYPE html>
 <html lang="es">
 	<head>
-		<title></title>
+		<title>Formulario de Registro - Ismael</title>
 		<meta charset="UTF-8">
 		<style>
 
 			body{
-				margin:0;
+				margin:100px;
 				color:#6a6f8c;
-				background:url(https://images.hdqwalls.com/download/green-blue-violet-gradient-8k-xv-5120x2880.jpg);
+				background:url(https://www.hdwallpaperslife.com/wp-content/uploads/2018/06/neon_bubbles-1920x1080.jpg);
 				font:600 16px/18px 'Open Sans',sans-serif;
 			}
 			*,:after,:before{box-sizing:border-box}
@@ -163,36 +163,57 @@
 			}
 
 		</style>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180625711-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
 
+  		gtag('config', 'UA-180625711-1');
+
+		//Conexión con iniciar sesión
+	</script>
+	<?php
+		$mensajeError="";
+		include("iniciarSesion.php");
+		
+	?>
+	</head>
 		<body>
 			
-			<div class="login-wrap">
+		<div class="login-wrap">
 			<div class="login-html">
 			<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Inicio de sesión</label>
 			<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registro</label>
+			
 			<div class="login-form">
+				<form action="iniciarSesion.php" method="GET"> 
 				<div class="sign-in-htm">
 					<div class="group">
 						<label for="user" class="label">Usuario</label>
-						<input id="usernick" type="text" class="input">
+						<input id="usernick" type="text" class="input" name="usuario">
 					</div>
 					<div class="group">
 						<label for="pass" class="label">Contraseña</label>
-						<input id="pass" type="password" class="input" data-type="password">
+						<input id="pass" type="password" class="input" data-type="password" name="password">
 					</div>
 					<div class="group">
 						<input id="check" type="checkbox" class="check" checked>
-						<label for="check"><span class="icon"></span> Keep me Signed in</label>
+						<label for="check"><span class="icon"></span> Matener sesión abierta</label>
 					</div>
 					<div class="group">
 						<input type="submit" class="button" value="Sign In">
 					</div>
 					<div class="hr"></div>
 					<div class="foot-lnk">
-						<a href="#forgot">Forgot Password?</a>
+						<a href="#forgot">He olvidado mi contraseña</a>
 					</div>
 				</div>
-				<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+				</form>
+				
+				
+				<form method="post" action="conexion.php"> 
 				<div class="sign-up-htm">
 					<div class="group">
 						<label for="user" class="label">Usuario</label>
@@ -200,11 +221,11 @@
 					</div>
 					<div class="group">
 						<label for="pass" class="label">Contraseña</label>
-						<input id="pass" type="password" class="input" data-type="password" name="password1">
+						<input id="pass" type="password" class="input" data-type="password" name="password1" required pattern=".{8,}">
 					</div>
 					<div class="group">
 						<label for="pass" class="label">Contraseña</label>
-						<input id="pass" type="password" class="input" data-type="password" name="password2">
+						<input id="pass" type="password" class="input" data-type="password" name="password2" required pattern=".{8,}">
 					</div>
 					<div class="group">
 						<label for="pass" class="label">Correo electrónico</label>
@@ -227,5 +248,4 @@
 	</div>
 </form>
 		</body>
-	</head>
 </html>

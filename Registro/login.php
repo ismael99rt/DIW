@@ -35,15 +35,14 @@
         if ($result->num_rows > 0) {
             ?>
                 <script lang="JavaScript">
-                    window.location.href="sesioniniciada.php";
+                    window.location.href="sesionAdmin.php";
                 </script>
             <?php
 
         } else {
             echo "Credenciales incorrectas";
             echo "<br>";
-            //echo $usuario;
-            echo $clavecifrada;
+            //echo $usuario;;
             echo "<form action=formulario.html>
             <input type=submit></form>";
     
