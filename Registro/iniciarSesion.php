@@ -22,7 +22,7 @@
     if($result->num_rows>0){
         if($row["password"]==$claveCifrada){
             $comprobarClave=true;
-            $sql = "UPDATE tabladiw SET numeroIntentos=0 WHERE usuario='$usuario';
+            $sql = "UPDATE tabladiw SET numeroIntentos=0 WHERE usuario='$usuario'";
         }
         if($row["perfil"]=="admin") {
             if($comprobarClave){
