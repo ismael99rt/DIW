@@ -30,7 +30,7 @@
 				height:100%;
 				position:absolute;
 				padding:90px 70px 50px 70px;
-				background:rgba(40,57,101,.9);
+				background:#121124;
 			}
 			.login-html .sign-in-htm,
 			.login-html .sign-up-htm{
@@ -64,7 +64,7 @@
 			.login-html .sign-in:checked + .tab,
 			.login-html .sign-up:checked + .tab{
 				color:#fff;
-				border-color:#1161ee;
+				border-color:#ef0f29;
 			}
 			.login-form{
 				min-height:345px;
@@ -104,7 +104,7 @@
 				font-size:12px;
 			}
 			.login-form .group .button{
-				background:#1161ee;
+				background:#ef0f29;
 			}
 			.login-form .group label .icon{
 				width:15px;

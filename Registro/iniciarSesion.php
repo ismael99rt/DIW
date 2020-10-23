@@ -50,11 +50,14 @@
                 $entrar=false;
             }
         } 
-    }
-    else {
+    } else {
         $entrar=false;
         $error="Las credenciales son incorrectas";
+        echo $error;
+        ?>
+           <a href="formulario.php"> <input type="submit" value="Regresar al login"></a>
+        <?php
     }
 
-    }
+    } 
 ?>
