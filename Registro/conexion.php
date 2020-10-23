@@ -24,7 +24,7 @@
 
     if($correo1==$correo2){
         $correo=$correo1;
-        $destinatario=$correo;
+        $destinatario=$correo; 
 
         if($pass1==$pass2) {
             $clave=$pass1;
@@ -67,10 +67,27 @@
 
             
                     mysqli_close($conexion);
-                    echo "Registro realizado con éxito.";
+                    echo "Registro realizado con éxito. Compruebe su correo para verificar la cuenta";
+                    ?>
+                        <a href="formulario.php"> <input type="submit" value="Iniciar sesión"></a>
+                    <?php
                     }
+        } else {
+            $entrar=false;
+            $error="Los campos no coinciden. Inténtelo de nuevo";
+            echo $error;
+            ?>
+               <a href="formulario.php"> <input type="submit" value="Regresar al registro"></a>
+            <?php
         }
             
-    } 
+    } else {
+        $entrar=false;
+        $error="Los campos no coinciden. Inténtelo de nuevo";
+        echo $error;
+        ?>
+           <a href="formulario.php"> <input type="submit" value="Regresar al registro"></a>
+        <?php
+    }
     
 ?>

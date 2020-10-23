@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION["usuario"])){
-    if($_SESSION["perfil"]!="admin"){
+    if($_SESSION["perfil"]=="usuario"){
         ?>
         <!DOCTYPE html>
         <html>
@@ -34,7 +34,7 @@ if(isset($_SESSION["usuario"])){
         <div class="container">
         <div class="row">
             <div class="col-12 col-sm-6 col-md-4">
-                <h4 class="adminmensaje">Bienvenido <?php echo $_SESSION["perfil"]?></h4>
+                <h4 class="adminmensaje">Bienvenido <?php echo $_SESSION["usuario"]?></h4>
             </div>
             <div class="col-12 col-sm-6 col-md-8 bg-warning">
                 <p>Menú de navegación</p>

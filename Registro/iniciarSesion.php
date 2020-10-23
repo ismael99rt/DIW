@@ -22,8 +22,9 @@
     if($result->num_rows>0){
         if($row["password"]==$claveCifrada){
             $comprobarClave=true;
+            $sql = "UPDATE tabladiw SET numeroIntentos=0 WHERE usuario='$usuario';
         }
-        if($row["perfil"]=="admin" && $row["bloqueado"]==0) {
+        if($row["perfil"]=="admin") {
             if($comprobarClave){
                 session_start();
                 $_SESSION["usuario"]=$row['usuario'];
@@ -36,7 +37,7 @@
             } else {
                 $entrar=false;
             }
-        } else if($row["perfil"] !="admin") {
+        } else if($row["perfil"] =="usuario") {
             if($comprobarClave){
                 session_start();
                 $_SESSION["usuario"]=$row['usuario'];
