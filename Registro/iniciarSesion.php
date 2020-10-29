@@ -19,6 +19,8 @@
     $sql = "SELECT * FROM tabladiw WHERE usuario='$usuario' and password='$claveCifrada'and  bloqueado=0";
     $result = $conn->query($sql);
     $row=$result->fetch_assoc();
+    $numeroIntentos=0;
+    
     if($result->num_rows>0){
         if($row["password"]==$claveCifrada){
             $comprobarClave=true;

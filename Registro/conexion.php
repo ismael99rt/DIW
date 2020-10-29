@@ -40,16 +40,17 @@
                         '<body><h1>Bienvenido al proyecto de DIW</h1>'.
                         $usuario. ', te damos la bienvenida al proyecto de Desarrollo de Interfaces de 2 DAW. Para poder activar su cuenta, haga clic en el enlace: '.
                         '<hr>'.
-                        '<b>Enlace de activación :</b>'.
-                        '<br>'.
-                        'http://www.ismael2daw.es/Registro/verify.php?email='.$correo.'&token='.$token.
-                        '<br>'.
-                        '<h3>Datos de su cuenta </h3>'.
+                        '<h3>Datos de su cuenta :</h3>'.
                         '<br>'.
                         'Usuario: '. $usuario.
                         '<br>'.
                         'Contraseña: '. $clavecifrada.
                         '<br>'.
+                        '<b>Enlace de activación :</b>'.
+                        'http://www.ismael2daw.es/Registro/verify.php?email='.$correo.'&token='.$token.
+                        //'<a href="http://www.ismael2daw.es/Registro/verify.php?email="'.$correo.'"&token="'.$token.'"><input type="button" name="enviar" value="Activar cuenta"></a>'.
+                        //'<a href="'.$correo."&token=".$token.'""><input type="button" name="enviar" value="Activar cuenta"</a>'.
+                        
                         '</body>'.
                         '</html>';
                     $cabeceras = 'MIME-Version: 1.0' . "\r\n";
