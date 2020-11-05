@@ -21,6 +21,7 @@
   	gtag('js', new Date());
 
   	gtag('config', 'UA-180625711-1');
+
 	</script>
 
 	<body class="is-preload">
@@ -45,6 +46,25 @@
 								<li><a href="#work">Trabajo</a></li>
 								<li><a href="#about">Info</a></li>
 								<li><a href="Registro/formulario.php">Login</a></li>
+								<li onclick="getLocation()"><a href="#contact">Contacto</a></li>
+								
+								<p id="contacto"></p>
+								<script>
+									var x = document.getElementById("contacto");
+
+									function getLocation() {
+										if (navigator.geolocation) {
+											navigator.geolocation.getCurrentPosition(showPosition);
+										} else { 
+											x.innerHTML = "Geolocation is not supported by this browser.";
+										}
+										}
+
+										function showPosition(position) {
+										x.innerHTML = "Latitude: " + position.coords.latitude + 
+										"<br>Longitude: " + position.coords.longitude;
+										}
+								</script>
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
 						</nav>
