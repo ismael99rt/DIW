@@ -213,7 +213,7 @@
 				</form>
 				
 				
-				<form method="post" action="conexion.php"> 
+				<form method="post" action="conexion.php" enctype="multipart/form-data"> 
 				<div class="sign-up-htm">
 					<div class="group">
 						<label for="user" class="label">Usuario</label>
@@ -234,6 +234,10 @@
 					<div class="group">
 						<label for="pass" class="label">Correo electrónico confirmación</label>
 						<input id="pass" type="text" class="input" name="email2">
+					</div>
+					<div class="group">
+						<label for="pass" class="label">Foto de perfil</label>
+						<input type="file" class="file" name="imagen">
 					</div>
 					<div class="group">
 						<input type="submit" class="button" value="submit" name="submit">
