@@ -1,11 +1,16 @@
 <?php
+header("Content-Type: text/html; charset=UTF-8");
 session_start();
+
 if(isset($_SESSION["usuario"])){
     if($_SESSION["perfil"]=="admin"){
         ?>
         <!DOCTYPE html>
         <html>
         <head>
+
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
         <!-- Required meta tags -->
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,9 +33,45 @@ if(isset($_SESSION["usuario"])){
             .adminmensaje {
                 color:red;
             }
+            #cajacookies {
+                box-shadow: 0px 0px 5px 5px #808080;
+                background-color: white;
+                color: black;
+                padding: 10px;
+                margin-left: -15px;
+                margin-right: -15px;
+                margin-bottom: 0px;
+                position: fixed;
+                top: 0px;
+                width: 100%;
+            }
+
+            #cajacookies button {
+                color: black;
+            }
         </style>
         </head>
         <body>
+
+        <?php
+                //Habilitar cookies
+                setcookie("nombre", 1, time() + (60*1) );  // Crea una Cookie con un tiempo de vida de 2 minutos
+
+                function comprobarCookies() {
+                    $activas = false;
+
+                if( isset($_COOKIE['nombre']) )
+                    $activas = true;
+
+                return $activas;
+	            }
+
+	            if( comprobarCookies() == true )
+                   '<p>Las cookies están habilitadas</p>';
+                else
+                    '<p>Las cookies están habilitadas</p>';
+        ?>
+
         <div class="container">
         <div class="row">
             <div class="col-12 col-sm-6 col-md-4">
@@ -62,8 +103,13 @@ if(isset($_SESSION["usuario"])){
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum pariatur consectetur laboriosam facere quia laudantium maxime harum, odio,
                      quos fugiat quam eius tenetur repellat a doloremque velit? Esse, minus impedit!</p>
             </div>
-        </div>
-        
+        </div>    
+    </div>
+    <div id="cajacookies">
+            <p><button onclick="aceptarCookies()" class="pull-right"><i class="fa fa-times"></i> Aceptar y cerrar éste mensaje</button>
+            Éste sitio web usa cookies, si permanece aquí acepta su uso.
+            Puede leer más sobre el uso de cookies en nuestra <a href="http://cookies.unidadeditorial.es/">política de privacidad</a>.
+            </p>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -1,11 +1,14 @@
 <?php
 session_start();
+header("Content-Type: text/html; charset=UTF-8");
 if(isset($_SESSION["usuario"])){
     if($_SESSION["perfil"]=="usuario"){
         ?>
         <!DOCTYPE html>
         <html>
         <head>
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
         <!-- Required meta tags -->
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,9 +31,67 @@ if(isset($_SESSION["usuario"])){
             .adminmensaje {
                 color:#ff1900;
             }
+            #cajacookies {
+                box-shadow: 0px 0px 5px 5px #808080;
+                background-color: white;
+                color: black;
+                padding: 10px;
+                margin-left: -15px;
+                margin-right: -15px;
+                margin-bottom: 0px;
+                position: fixed;
+                top: 0px;
+                width: 100%;
+            }
+
+            #cajacookies button {
+                color: black;
+            }
         </style>
         </head>
+        <script>
+           /* ésto comprueba la localStorage si ya tiene la variable guardada */
+            function compruebaAceptaCookies() {
+            if(localStorage.aceptaCookies == 'true'){
+                cajacookies.style.display = 'none';
+            }
+            } 
+
+            /* aquí guardamos la variable de que se ha
+            aceptado el uso de cookies así no mostraremos
+            el mensaje de nuevo */
+            function aceptarCookies() {
+                localStorage.aceptaCookies = 'true';
+                cajacookies.style.display = 'none';
+            }   
+
+            /* ésto se ejecuta cuando la web está cargada */
+            $(document).ready(function () {
+                compruebaAceptaCookies();
+            });
+
+        </script>
         <body>
+        
+            <?php
+                //Habilitar cookies
+                setcookie("nombre", 1, time() + (60*1) );  // Crea una Cookie con un tiempo de vida de 2 minutos
+
+                function comprobarCookies() {
+                    $activas = false;
+
+                if( isset($_COOKIE['nombre']) )
+                    $activas = true;
+
+                return $activas;
+	            }
+
+	            if( comprobarCookies() == true )
+                   '<h1>Las cookies están habilitadas</h1>';
+                else
+                    '<p>Las cookies están habilitadas</p>';
+            ?>
+    
         <div class="container">
         <div class="row">
             <div class="col-12 col-sm-6 col-md-4">
@@ -63,7 +124,13 @@ if(isset($_SESSION["usuario"])){
                      quos fugiat quam eius tenetur repellat a doloremque velit? Esse, minus impedit!</p>
             </div>
         </div>
-        
+    </div>
+
+    <div id="cajacookies">
+    <p><button onclick="aceptarCookies()" class="pull-right"><i class="fa fa-times"></i> Aceptar y cerrar éste mensaje</button>
+        Éste sitio web usa cookies, si permanece aquí acepta su uso.
+        Puede leer más sobre el uso de cookies en nuestra <a href="http://cookies.unidadeditorial.es/">política de privacidad</a>.
+    </p>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
