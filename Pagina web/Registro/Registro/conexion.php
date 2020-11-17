@@ -1,10 +1,10 @@
 <?php
 
 //Crear conexión
-    $servername = "fdb28.awardspace.net";
-    $username = "3598790_cdpjosecabrera";
+    $servername = "localhost";
+    $username = "oukqmvok_diw";
     $password = "Trebujena2020";
-    $dbname = "3598790_cdpjosecabrera";
+    $dbname = "oukqmvok_diw";
 
     $conn = new mysqli($servername, $username,$password,$dbname);
 
@@ -22,6 +22,7 @@
     $bloqueado=1;
     $token = md5( rand(0,1000) );
 
+    //yo lo he hecho tras declarar las primeras variables
 
     //Código imagen a subir
     $target_dir = "img/";
