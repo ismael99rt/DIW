@@ -1,0 +1,19 @@
+function validar_clave($pass1){
+        if(strlen($pass1) < 8){
+           return false;
+        }
+        if(strlen($pass1) > 24){
+           return false;
+        }
+        if (!preg_match('`[a-z]`',$pass1)){
+           return false;
+        }
+        if (!preg_match('`[A-Z]`',$pass1)){
+           return false;
+        }
+        if (!preg_match('`[0-9]`',$pass1)){
+           return false;
+        }
+        $error_clave = "";
+        return true;
+     }
