@@ -7,9 +7,11 @@
          die("Connection failed: " . $conn->connect_error);
      }
 
-    $usuario=$_POST["usernick"];
+    $nombre=$_POST["nombre"];
+    $apellidos=$_POST["apellidos"];
+    $nif=$_POST["nif"];
+    $telefono=$_POST["telefono"];
     $pass1=$_POST["password1"];
-    $pass2=$_POST["password2"];
     $correo1=$_POST["email1"];
     $correo2=$_POST["email2"];
     $clave="";

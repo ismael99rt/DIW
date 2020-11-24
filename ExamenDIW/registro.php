@@ -25,6 +25,7 @@ if(isset($_SESSION["usuario"])){
 			a{color:inherit;text-decoration:none}
 
 			.login-wrap{
+				height:900px;
 				width:100%;
 				margin:auto;
 				max-width:525px;
@@ -203,12 +204,16 @@ if(isset($_SESSION["usuario"])){
 						<input id="user" type="text" class="input" name="nombre" required>
 					</div>
 					<div class="group">
-						<label for="pass" class="label">Apellidos</label>
-						<input id="user" type="text" class="input" name="apellidos" required>
+						<label for="pass" class="label">Apellido 1</label>
+						<input id="apellido1" type="text" class="input" name="apellido1" required>
+					</div>
+					<div class="group">
+						<label for="pass" class="label">Apellido 2</label>
+						<input id="apellido2" type="text" class="input" name="apellido2" required>
 					</div>
 					<div class="group">
 						<label for="pass" class="label">NIF</label>
-						<input id="user" type="text" class="input" name="nif" required>
+						<input id="user" type="text" class="input" name="nif" pattern="[0-9]{8}[A-Za-z]{1}" required>
 					</div>
 					<div class="group">
 						<label for="pass" class="label">Telefono</label>
@@ -216,11 +221,11 @@ if(isset($_SESSION["usuario"])){
 					</div>
 					<div class="group">
 						<label for="pass" class="label">Clave</label>
-						<input id="pass" type="password" class="input" data-type="password" name="password" required>
+						<input id="clave" type="password" class="input" data-type="password" name="clave" required>
 					</div>
 					<div class="group">
-						<label for="pass" class="label">Foto de perfil</label>
-						<input type="file" class="file" name="fileToUpload" required>
+						<label for="pass" class="label">Correo</label>
+						<input id="correo" type="text" class="input" name="correo" required>
 					</div>
 					<div class="group">
 						<input type="submit" class="button" value="submit" name="submit">
