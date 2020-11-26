@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <title>Hello, world!</title>
-    <style>
-        body {
-            background-image: url(imagenes/fondo4.png);
-        }
-        </style>
   </head>
+  <style>
+    body {
+        background-image: url(imagenes/fondo2.png);
+    }
+  </style>
   <body>
       <!-- Header -->
     <div class="container-fluid bg-primary">
@@ -23,13 +23,29 @@
         </div>
     </div>
     <!-- Header-->
+    <!-- Cuadro login-->
+    <div class="row container-fluid justify-content-center h-100 mt-5 pt-5">
+        <!-- Cuadro login-->
+        <div class="col-sm-12">
+            <form action=""/RuizTejeroIsmaelExamen/buscaTitulo" method="POST" class="pl-5 pt-5 mt-5">
+                <p class="display-4 mt-5 pt-4 font-weight-bold">Buscar por Título</p>
+                <hr>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">Título</span>
+                    </div>
+                    <input type="text" name="pelicula" class="form-control col-lg-2" placeholder="Película" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                  <button type="submit" name="enviar" class="btn btn-warning">Modificar película</button>
+                  <button type="reset" class="btn btn-secondary">Cancelar</button>
+            </form>
+        </div>
+        <!-- Cuadro login-->
+    </div>
+    <!-- Cuadro login-->
     <!-- Footer -->
-    <footer class="bg-dark fixed-bottom p-3 text-center text-white">
-      <a href="/RuizTejeroIsmaelExamen/altaPeliculas.jsp"><button type="button" class="btn btn-primary m-4 p-3">Alta de películas</button></a>
-      <a href="/RuizTejeroIsmaelExamen/modificarPeliculas.jsp"><button type="button" class="btn btn-warning m-4 p-3">Modificar películas</button></a>
-      <a href="/RuizTejeroIsmaelExamen/bajaPeliculas.jsp"><button type="button" class="btn btn-danger m-4 p-3">Baja de películas</button></a>
-      <a href="/RuizTejeroIsmaelExamen/listadoPeliculas.jsp"><button type="button" class="btn btn-info m-4 p-3">Listado de películas</button></a>
-      <a href="/RuizTejeroIsmaelExamen/index.html"><button type="button" class="btn btn-success m-4 p-3">Volver al login</button></a>
+    <footer class="bg-secondary fixed-bottom p-4 text-center text-white">
+        <button type="reset" class="btn btn-warning">Volver a la gestión de películas</button>
     </footer>
     <!-- Footer -->
 

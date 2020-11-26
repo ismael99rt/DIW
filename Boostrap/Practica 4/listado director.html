@@ -1,3 +1,7 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="Modelo.Director"%>
+<%@page import="Controlador.Db"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,9 +16,9 @@
   </head>
   <style>
     body {
-        background-image: url(imagenes/fondo4.png);
+        background-image: url(imagenes/fondo2.png);
     }
-</style>
+  </style>
   <body>
       <!-- Header -->
     <div class="container-fluid bg-primary">
@@ -26,38 +30,39 @@
     <!-- Cuadro login-->
     <div class="row container-fluid justify-content-center h-100 mt-5 pt-5">
         <!-- Cuadro login-->
-        <div class="col-sm-6">
-            <form action="/RuizTejeroExamen/ServletControlaLogin" method="POST" class="pl-5 pt-5 mt-5">
-                <p class="display-4 mt-5 pt-4 text-white shadow">Introduzca el usuario y la contraseña</p>
+        <div class="col-sm-12">
+            <form action="/RuizTejeroIsmaelExamen/buscaDirector" method="POST" class="pl-5 pt-5 mt-5">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1">@</span>
+                      <label class="input-group-text" for="inputGroupSelect01">Película</label>
                     </div>
-                    <input type="text" class="form-control col-md-4" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
-                  </div>
-                  
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1">**</span>
-                    </div>
-                    <input type="password" class="form-control col-md-4" placeholder="Contraseña" aria-label="password" aria-describedby="basic-addon1">
-                  </div>
-                  <button type="button" class="btn btn-primary shadow">Iniciar sesión</button>
-                  <button type="reset" class="btn btn-warning shadow">Cancelar</button>
+                    <select class="custom-select col-lg-2" id="inputGroupSelect01" name="director">
+                      <option selected>Elige una película...</option>
+                      <%
+                        ServletContext contexto=getServletContext();
+                        RequestDispatcher rd;
+                        Db baseDato=null;
+                        ArrayList<Director>listaDirectores=new ArrayList<Director>();
+                        baseDato=new Db();
+                        
+                        listaDirectores=baseDato.listadoDirectores();
+                        for(Director directo:listaDirectores) {
+                    %>
+                    <option value="<%= directo.getId() %>"><%= directo.getDirector() %></option>
+                    <% } %>
+            </select> 
+                    </select>
+                </div>
+                  <button type="submit" class="btn btn-warning">Buscar</button>
+                  <button type="reset" class="btn btn-secondary">Cancelar</button>
             </form>
-
         </div>
         <!-- Cuadro login-->
-        <!-- Imagen-->
-        <div class="col-sm-6 mt-5 text-center">
-            <!--<img src="imagenes/logo.jpg" class="img-fluid mt-3" style="height: 450px;">-->
-        </div>
-        <!-- Imagen-->
     </div>
     <!-- Cuadro login-->
     <!-- Footer -->
-    <footer class="bg-dark fixed-bottom p-4 text-center text-white">
-        Proyecto DIW Ismael. Todos los derechos reservados
+    <footer class="bg-secondary fixed-bottom p-4 text-center text-white">
+        <button type="reset" class="btn btn-warning">Volver a la gestión de películas</button>
     </footer>
     <!-- Footer -->
 

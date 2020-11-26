@@ -28,17 +28,7 @@
     </div>
 
     <!-- Tabla-->
-    <%
-             ServletContext contexto=getServletContext();
-            RequestDispatcher rd;
-            Db baseDato;   
-            ArrayList<TodasPeliculas>listaPelis=new ArrayList<TodasPeliculas>();
-            
-            baseDato=new Db();
-            listaPelis=baseDato.listaPelis();
-            
-            for(TodasPeliculas peli:listaPelis) {
-    %>
+    
     <div class="container">
         <div class="row container-fluid mt-3 pt-3">
             <table class="table table-dark rounded-right table table-striped table table-hover">
@@ -50,11 +40,23 @@
                   </tr>
                 </thead>
                 <tbody>
+                    <%
+                        ServletContext contexto=getServletContext();
+                        RequestDispatcher rd;
+                        String pelicula=(String)getServletContext().getAttribute("pelicula");
+                        Db baseDato;
+                        ArrayList<TodasPeliculas>listaPeli=new ArrayList<TodasPeliculas>();
+                    
+                        baseDato=new Db();
+                        listaPeli=baseDato.buscarPorTitulo(pelicula);
+                        
+                        for(TodasPeliculas peli:listaPeli) {
+                    %>
                   <tr>
                     <td><%= peli.getPelicula() %></td>
                     <td><%= peli.getDirector()%></td>
                     <td><%= peli.getFecha()%></td>
-                    </tr>
+                  </tr>
                     <% } %>
                 </tbody>
               </table>
