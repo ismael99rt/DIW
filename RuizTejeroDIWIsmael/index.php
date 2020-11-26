@@ -1,11 +1,3 @@
-<?php
-header("Content-Type: text/html; charset=UTF-8");
-session_start();
-?>
-<?php
-if(isset($_SESSION["usuario"])){
-    if($_SESSION["perfil"]=="admin"){
-        ?>
 <DOCTYPE html>
 <html lang="es">
 	<head>
@@ -174,62 +166,40 @@ if(isset($_SESSION["usuario"])){
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180625711-1"></script>
 	<script>
-  		window.dataLayer = window.dataLayer || [];
-  		function gtag(){dataLayer.push(arguments);}
-  		gtag('js', new Date());
-
-  		gtag('config', 'UA-180625711-1');
 
 		//Conexión con iniciar sesión
 	</script>
 	<?php
-    
-		$mensajeError="";
-		include("iniciarSesion.php");
 		
 	?>
 	</head>
 		<body>
+			
 		<div class="login-wrap">
 			<div class="login-html">
-			<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Registro de usuario</label>
+			<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Inicio de sesión</label>
 			<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab" style="visibility:hidden">Registro</label>
 			
 			<div class="login-form">
-				<form action="alta.php" method="POST" enctype="multipart/form-data"> 
+				<form action="iniciarSesion.php" method="GET"> 
 				<div class="sign-in-htm">
-                <div class="group">
-						<label for="user" class="label">Nombre</label>
-						<input id="user" type="text" class="input" name="nombre" required>
+					<div class="group">
+						<label for="user" class="label">Usuario</label>
+						<input id="usernick" type="text" class="input" name="usuario">
 					</div>
 					<div class="group">
-						<label for="pass" class="label">Apellidos</label>
-						<input id="user" type="text" class="input" name="apellidos" required>
+						<label for="pass" class="label">Contraseña</label>
+						<input id="pass" type="password" class="input" data-type="password" name="password">
 					</div>
 					<div class="group">
-						<label for="pass" class="label">NIF</label>
-						<input id="user" type="text" class="input" name="nif" required>
+						<input id="check" type="checkbox" class="check" checked>
 					</div>
 					<div class="group">
-						<label for="pass" class="label">Telefono</label>
-						<input id="pass" type="text" class="input" name="telefono" required>
+						<input type="submit" class="button" value="Sign In">
 					</div>
-					<div class="group">
-						<label for="pass" class="label">Clave</label>
-						<input id="pass" type="password" class="input" data-type="password" name="password" required>
-					</div>
-					<div class="group">
-						<label for="pass" class="label">Foto de perfil</label>
-						<input type="file" class="file" name="fileToUpload" required>
-					</div>
-					<div class="group">
-						<input type="submit" class="button" value="submit" name="submit">
-					</div>
+					<div class="hr"></div>
 				</div>
 				</form>
+
 		</body>
 </html>
-<?php
-    }
-}
-?>
