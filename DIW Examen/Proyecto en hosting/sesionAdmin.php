@@ -18,12 +18,27 @@ if(isset($_SESSION["usuario"])){
 
         <script>
             let map;
-
             function initMap() {
-                map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: -34.397, lng: 150.644 },
-                zoom: 8,
-                });
+                const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 13,
+                center: { lat: 36.854817396509915, lng: -6.039870001845592 },
+                
+            });
+                marker = new google.maps.Marker({
+                map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: { lat: 36.854817396509915, lng: -6.039870001845592 },
+            });
+                marker.addListener("click", toggleBounce);
+            }
+
+            function toggleBounce() {
+                if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+                } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+                }
             }
         </script>
 
@@ -39,6 +54,7 @@ if(isset($_SESSION["usuario"])){
         
             #map {
                 height: 100%;
+                height:500px;
             }
             .slider{
                 height: 350px;
@@ -46,6 +62,7 @@ if(isset($_SESSION["usuario"])){
             }
             body {
                 background:white;
+                height:100%;
             }
             .col-12 col-sm-6 col-md-4 {
                 background:red;
@@ -128,11 +145,17 @@ if(isset($_SESSION["usuario"])){
                      quos fugiat quam eius tenetur repellat a doloremque velit? Esse, minus impedit!</p>
             </div>
             <!-- GOOGLE MAPS -->
-            <div class="col-12 col-md-4 bg-success container" style="width:200px">
+            <div class="col-12 col-md-4 bg-success container mb-5" style="width:200px">
                 <h3>Google Maps</h3>
                  <div id="map"></div>
             </div>
-        </div>    
+        </div> 
+        <!-- Footer -->
+        <footer class="bg-danger p-4 text-center text-white mt-5">
+            <b>Proyecto DIW Ismael</b>
+            <img src="" style="width: 5%;" class="img-fluid">
+        </footer>
+        <!-- Footer -->   
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
