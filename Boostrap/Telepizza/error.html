@@ -12,7 +12,7 @@
   <body>
         <!-- Header -->
     <div class="container-fluid bg-danger">
-        <div class="text-center bg-danger p-4 fixed-top text-white">
+        <div class="text-center bg-danger p-4 text-white">
             <img src="imagenes/logo.png" style="width: 10%;">
         </div>
     </div>
@@ -21,39 +21,21 @@
     <!-- Cuadro login-->
     <div class="row container-fluid justify-content-center h-100 mt-5 pt-5">
         <!-- Cuadro login-->
-        <div class="col-sm-6">
-            <form action="/RuizTejeroExamen/ServletControlaLogin" method="POST" class="pl-5 pt-5 mt-5">
-                <p class="display-4 mt-5 pt-4 text-danger font-weight-bold">Introduzca el usuario y la contraseña</p>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1">@</span>
-                    </div>
-                    <input type="text" class="form-control col-md-4" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
-                  </div>
-                  
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1">**</span>
-                    </div>
-                    <input type="password" class="form-control col-md-4" placeholder="Contraseña" aria-label="password" aria-describedby="basic-addon1">
-                  </div>
-
-                  <button type="button" class="btn btn-danger shadow">Iniciar sesión</button>
-                  <button type="reset" class="btn btn-secondary shadow">Cancelar</button>
+        <div class="col-sm-12">
+            <form action="" method="POST" class="pl-5 pt-5 mt-5">
+                <p class="display-4 mt-5 pt-4 font-weight-light text-danger">Los campos no pueden estar vacíos</p>
+                <hr>
+                <a href="/Ismael_Telepizza/index.html"><button type="button" class="btn btn-danger m-4 p-3">Volver al login</button></a>
             </form>
-
         </div>
         <!-- Cuadro login-->
-        <!-- Imagen-->
-        <div class="col-sm-6 mt-5 text-center">
-            <img src="imagenes/pizza.jpg" class="img-fluid mt-3" style="height: 450px;">
-        </div>
-        <!-- Imagen-->
+    </div>
+    <!-- Cuadro login-->
     </div>
     <!-- Fin Cuadro login-->
 
     <!-- Footer -->
-    <footer class="bg-danger fixed-bottom p-4 text-center text-white">
+    <footer class="bg-danger p-4 text-center text-white fixed-bottom">
         Telepizza España
         <img src="imagenes/redes.png" style="width: 5%;" class="img-fluid">
     </footer>

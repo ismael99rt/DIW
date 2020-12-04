@@ -10,6 +10,22 @@ if(isset($_SESSION["usuario"])){
         <head>
 
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAru1Nod25l7JxIguUfBK3rhpd1vPf0xxI&callback=initMap&libraries=&v=weekly"
+            defer
+        ></script>
+
+        <script>
+            let map;
+
+            function initMap() {
+                map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8,
+                });
+            }
+        </script>
 
         <!-- Required meta tags -->
             <meta charset="utf-8">
@@ -20,6 +36,10 @@ if(isset($_SESSION["usuario"])){
 
         <title>Pagina de Admin</title>
         <style>
+        
+            #map {
+                height: 100%;
+            }
             .slider{
                 height: 350px;
                 background:#777;
@@ -53,30 +73,20 @@ if(isset($_SESSION["usuario"])){
         </head>
         <body>
 
+
         <?php
-                //Habilitar cookies
-                setcookie("nombre", 1, time() + (60*1) );  // Crea una Cookie con un tiempo de vida de 2 minutos
-
-                function comprobarCookies() {
-                    $activas = false;
-
-                if( isset($_COOKIE['nombre']) )
-                    $activas = true;
-
-                return $activas;
-	            }
-
-	            if( comprobarCookies() == true )
-                   '<p>Las cookies están habilitadas</p>';
-                else
-                    '<p>Las cookies están habilitadas</p>';
+        /* API: AIzaSyB7r1_X2TWJgmKunPNWcB4SAgu8TakAN3Y */
+            //Habilitar cookies
+            $cookie_name = "user";
+            $cookie_value = "John Doe";
+            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
         ?>
 
         <div class="container">
         <div class="row">
             <div class="col-12 col-sm-6 col-md-4">
                 <h4 class="adminmensaje">Bienvenido <?php echo $_SESSION["perfil"]?></h4>
-                <p style="color:black">Haz clic en el boton para activar tu ubicaciom</p>
+                <p style="color:black">Haz clic en el boton para activar tu ubicacion</p>
                 <button onclick="getLocation()">Geolocalizacion</button>
                 <p id="demo" style="color:black">Prueba</p>
                 <script>
@@ -117,18 +127,12 @@ if(isset($_SESSION["usuario"])){
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum pariatur consectetur laboriosam facere quia laudantium maxime harum, odio,
                      quos fugiat quam eius tenetur repellat a doloremque velit? Esse, minus impedit!</p>
             </div>
-            <div class="col-12 col-md-4 bg-success">
-                <h3>Título 3</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum pariatur consectetur laboriosam facere quia laudantium maxime harum, odio,
-                     quos fugiat quam eius tenetur repellat a doloremque velit? Esse, minus impedit!</p>
+            <!-- GOOGLE MAPS -->
+            <div class="col-12 col-md-4 bg-success container" style="width:200px">
+                <h3>Google Maps</h3>
+                 <div id="map"></div>
             </div>
         </div>    
-    </div>
-    <div id="cajacookies">
-            <p><button onclick="aceptarCookies()" class="pull-right"><i class="fa fa-times"></i> Aceptar y cerrar éste mensaje</button>
-            Éste sitio web usa cookies, si permanece aquí acepta su uso.
-            Puede leer más sobre el uso de cookies en nuestra <a href="http://cookies.unidadeditorial.es/">política de privacidad</a>.
-            </p>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

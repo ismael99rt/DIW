@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Telepizza</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+        <!-- Header -->
+    <div class="container-fluid bg-danger">
+        <div class="text-center bg-danger p-4 fixed-top text-white">
+            <img src="imagenes/logo.png" style="width: 10%;">
+        </div>
+    </div>
+    <!-- Header-->
+
+    <!-- Cuadro login-->
+    <div class="row container-fluid justify-content-center h-100 mt-5 pt-5">
+        <!-- Cuadro login-->
+        <div class="col-sm-6">
+            <form action="/RuizTejeroExamen/ServletControlaLogin" method="POST" class="pl-5">
+                <p class="display-4 mt-5 pt-4 text-danger font-weight-bold">Registro de cliente</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">@</span>
+                    </div>
+                    <input type="text" class="form-control col-md-6" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                  
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">*</span>
+                    </div>
+                    <input type="password" class="form-control col-md-6" placeholder="Contraseña" aria-label="password" aria-describedby="basic-addon1">
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">C</span>
+                    </div>
+                    <input type="text" class="form-control col-md-6" placeholder="Correo" aria-label="email" aria-describedby="basic-addon1">
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">D</span>
+                    </div>
+                    <input type="password" class="form-control col-md-6" placeholder="Dirección" aria-label="address" aria-describedby="basic-addon1" maxlength="20">
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">E</span>
+                    </div>
+                    <input type="password" class="form-control col-md-6" placeholder="Email" aria-label="email" aria-describedby="basic-addon1">
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">T</span>
+                    </div>
+                    <input type="password" class="form-control col-md-6" placeholder="Teléfono: 698765432" aria-label="telephone" aria-describedby="basic-addon1" maxlength="10">
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">N</span>
+                    </div>
+                    <input type="password" class="form-control col-md-6" placeholder="Nombre" aria-label="name" aria-describedby="basic-addon1" maxlength="30">
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">A</span>
+                    </div>
+                    <input type="password" class="form-control col-md-6" placeholder="Apellidos" aria-label="lastname" aria-describedby="basic-addon1" maxlength="30">
+                  </div>
+
+                  <button type="button" class="btn btn-danger shadow mb-5">Registrarse</button>
+                  <button type="reset" class="btn btn-secondary shadow mb-5">Cancelar</button>
+            </form>
+
+        </div>
+        <!-- Cuadro login-->
+        <!-- Imagen-->
+        <div class="col-sm-6 mt-5 text-center">
+            <div class="mt-5">
+                <img src="imagenes/pizza.jpg" class="img-fluid mt-5" style="height: 450px;">
+            </div>
+        </div>
+        <!-- Imagen-->
+    </div>
+    <!-- Fin Cuadro login-->
+
+    <!-- Footer -->
+    <footer class="bg-danger p-4text-center text-white">
+        Telepizza España
+        <img src="imagenes/redes.png" style="width: 5%;" class="img-fluid">
+    </footer>
+    <!-- Footer -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
