@@ -8,6 +8,7 @@ if(isset($_SESSION["usuario"])){
         <!DOCTYPE html>
         <html>
         <head>
+        
 
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -17,28 +18,42 @@ if(isset($_SESSION["usuario"])){
         ></script>
 
         <script>
+        
+        <?php
+            var sql="SELECT * from usuarios";
+            
+        ?>
+        
             let map;
-            function initMap() {
-                const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 13,
-                center: { lat: 36.854817396509915, lng: -6.039870001845592 },
-                
-            });
-                marker = new google.maps.Marker({
-                map,
-                draggable: true,
-                animation: google.maps.Animation.DROP,
-                position: { lat: 36.854817396509915, lng: -6.039870001845592 },
-            });
-                marker.addListener("click", toggleBounce);
-            }
+            let icon;
 
-            function toggleBounce() {
-                if (marker.getAnimation() !== null) {
-                marker.setAnimation(null);
-                } else {
-                marker.setAnimation(google.maps.Animation.BOUNCE);
-                }
+            function initMap() {
+            // store latitude and longitude for map and marker
+            var myLatLng = {lat: 36.857455, lng: -6.040587};
+            
+
+            // create a map
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: myLatLng
+            });
+
+            //create a icon
+            var icon = {
+            url: "https://static.vecteezy.com/system/resources/thumbnails/000/355/795/small/Real_Estate__28101_29.jpg", // url
+            scaledSize: new google.maps.Size(50, 50), // scaled size
+            origin: new google.maps.Point(0,0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+            };
+
+            // create a custom marker
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'CASA',
+                icon: icon
+                });
+            
             }
         </script>
 
@@ -52,6 +67,9 @@ if(isset($_SESSION["usuario"])){
         <title>Pagina de Admin</title>
         <style>
         
+            #icon {
+                width:50%;
+            }
             #map {
                 height: 100%;
                 height:500px;
@@ -86,6 +104,8 @@ if(isset($_SESSION["usuario"])){
             #cajacookies button {
                 color: black;
             }
+
+            
         </style>
         </head>
         <body>
