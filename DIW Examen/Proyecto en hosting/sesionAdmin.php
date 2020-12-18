@@ -17,46 +17,6 @@ if(isset($_SESSION["usuario"])){
             defer
         ></script>
 
-        <script>
-        
-        <?php
-            var sql="SELECT * from usuarios";
-            
-        ?>
-        
-            let map;
-            let icon;
-
-            function initMap() {
-            // store latitude and longitude for map and marker
-            var myLatLng = {lat: 36.857455, lng: -6.040587};
-            
-
-            // create a map
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
-                center: myLatLng
-            });
-
-            //create a icon
-            var icon = {
-            url: "https://static.vecteezy.com/system/resources/thumbnails/000/355/795/small/Real_Estate__28101_29.jpg", // url
-            scaledSize: new google.maps.Size(50, 50), // scaled size
-            origin: new google.maps.Point(0,0), // origin
-            anchor: new google.maps.Point(0, 0) // anchor
-            };
-
-            // create a custom marker
-            var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                title: 'CASA',
-                icon: icon
-                });
-            
-            }
-        </script>
-
         <!-- Required meta tags -->
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -66,10 +26,6 @@ if(isset($_SESSION["usuario"])){
 
         <title>Pagina de Admin</title>
         <style>
-        
-            #icon {
-                width:50%;
-            }
             #map {
                 height: 100%;
                 height:500px;
@@ -110,6 +66,8 @@ if(isset($_SESSION["usuario"])){
         </head>
         <body>
 
+            <?php
+            ?>
 
         <?php
         /* API: AIzaSyB7r1_X2TWJgmKunPNWcB4SAgu8TakAN3Y */
@@ -145,6 +103,7 @@ if(isset($_SESSION["usuario"])){
             </div>
             <div class="col-12 col-sm-6 col-md-8 bg-warning">
                 <p>Menú de navegación</p>
+                <a href="mapa.php"><p>Google Maps</p></a>
             </div>
         </div>
         <div class="row slider align-items-center justify-content-center">

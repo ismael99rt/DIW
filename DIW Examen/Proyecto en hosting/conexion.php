@@ -26,37 +26,38 @@
 
     //Código imagen a subir
     $target_dir = "img/";
-        $target_file = $target_dir . basename($_FILES["imagen"]["tmp_name"]);
         $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-        $nombreFoto=$_FILES["imagen"]["tmp_name"];
-        // Check if image file is a actual image or fake image
-        if(isset($_POST["submit"])) {
-                 $check = getimagesize($_FILES["imagen"]["tmp_name"]);
-                 if($check !== false) {
-                    //echo "El archivo es una imagen - " . $check["mime"] . ".";
-                    $uploadOk = 1;
-                 } else {
-                    echo "El archivo no es una imagen.";
-                    $uploadOk = 0;
-                 }
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $nombreFoto = $_FILES['fileToUpload']['name'];
+        //para comprobar si es una imagen falsa o no
+        if (isset($_POST["submit"])) {
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if ($check !== false) {
+                $uploadOk = 1;
+            } else {
+                $uploadOk = 0;
+            }
+        }
+        if ($_FILES["fileToUpload"]["size"] > 500000) {
+            $uploadOk = 0;
+            
         }
 
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif" ) {
-        //echo "Lo sentimos, solo se permiten archivos JPG, JPEG, PNG y GIF El archivo es una imagen.";
-        $uploadOk = 0;
+        // Allow certain file formats
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+            $uploadOk = 0;
         }
 
+        // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-          //echo "Lo sentimos, su archivo no fue subido.";
-        // si todo está bien, intenta subir el archivo
+            // if everything is ok, try to upload file
         } else {
-          if (move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file)) {
-               // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-          } else {
-                //echo "Lo sentimos, hubo un error al cargar su archivo..";
-          }
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            } else {
+                
+            }
         }
 
     if($correo1==$correo2){
@@ -98,8 +99,8 @@
                         $conexion=mysqli_connect($servername, $username, $password, $dbname) or
                         die("Problemas con la conexión");
 
-                        mysqli_query($conexion,"INSERT INTO tabladiw (usuario,password,correo,bloqueado,token,foto) VALUES
-                            ('$usuario','$clavecifrada','$correo','$bloqueado','$token','$nombreFoto')");
+                        mysqli_query($conexion,"INSERT INTO tabladiw (usuario,password,correo,bloqueado,token,foto,longitud,altitud) VALUES
+                            ('$usuario','$clavecifrada','$correo','$bloqueado','$token','$nombreFoto','null','null')");
 
             
                     mysqli_close($conexion);

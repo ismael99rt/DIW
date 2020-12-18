@@ -237,7 +237,7 @@
 					</div>
 					<div class="group">
 						<label for="pass" class="label">Foto de perfil</label>
-						<input type="file" class="file" name="imagen">
+						<input type="file" class="file" name="fileToUpload" required>
 					</div>
 					<div class="group">
 						<input type="submit" class="button" value="submit" name="submit">
