@@ -162,7 +162,6 @@ if (isset($_SESSION["usuario"])) {
 
                     while ($row = mysqli_fetch_array($result)) {
                     ?>
-
                         <div class="col-md-4 mt-4">
                             <div class="card" style="width: 18rem;">
                                 <img class="card-img-top" src="imagenes/<?= $row['foto'] ?>" alt="Card image cap">
@@ -172,12 +171,10 @@ if (isset($_SESSION["usuario"])) {
                                 </div>
                             </div>
                         </div>
-                        
-
                     <?php
                     }
                     ?>
-                    <input type="submit" name="enviar" value="Borrar"/>
+                    <input type="submit" name="enviar" value="Borrar" class="btn btn-primary"/>
                     </form>
                 </div>
             </div>
