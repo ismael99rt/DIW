@@ -108,6 +108,7 @@ if(isset($_SESSION["usuario"])){
                 <a href="seleccionmultiple.php">
                     <p>Selección múltiple</p>
                 </a>
+                <a href="wheredinamica.php"><p>Where dinamica</p></a>
             </div>
             
         </div>
