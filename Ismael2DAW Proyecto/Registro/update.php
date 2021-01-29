@@ -101,6 +101,9 @@ if (isset($_SESSION["usuario"])) {
                         <a href="seleccionmultiple.php">
                             <p>Selección múltiple</p>
                         </a>
+                        <a href="wheredinamica.php">
+                            <p>Where dinamica</p>
+                        </a>
                     </div>
 
                     <?php
@@ -113,61 +116,47 @@ if (isset($_SESSION["usuario"])) {
 
                     <?php
 
-
-                    $clauses=array();
-                    $idCategoria="";
-                    $precio="";
-
-                    //find the total number of results stored in the database  
-                    $query = 'SELECT * FROM productos';
-
-                    if(isset($_POST['idCategoria'])){
-                        $idCategoria=$_POST['idCategoria'];
-                        $clauses[]='idCategoria = "' . $idCategoria . '"';
-                    }
-
-                    if(isset($_POST['precio'])){
-                        $precio=$_POST['precio'];
-                        $clauses[]='precio >= "' . $precio . '"';
-                    }
-
-                    if(count($clauses)>0){
-                        $query .= ' WHERE ' . implode('AND ',$clauses).';';
-                    }
-
-                    echo $query;
-
-
                     include('conexiones.php');
+
+                    // Create connection
                     $conn = new mysqli($servername, $username, $password, $dbname);
+                    // Check connection
                     if ($conn->connect_error) {
                         die("Connection failed: " . $conn->connect_error);
                     }
+
+
+                    //find the total number of results stored in the database  
+                    $query = "select  * from tabladiw";
                     $result = mysqli_query($conn, $query);
-
                     ?>
-                </div>
-            </div>
 
-            <?php
-                if($result->num_rows>0){
-                    while($row=$result->fetch_assoc()) {
-                    ?>
-                        <div class="col-md-4 mt-4">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="imagenes/<?= $row['foto'] ?>" alt="Card image cap">
-                                <div class="card-body">
-                                    <input type="checkbox" class="card-title" value="<?php echo $row['idProducto'] ?>"><?php echo $row['nombreProducto'] ?></input>
-                                    <p class="card-text">Precio: <?php echo $row['precio'] ?> euros</p>
-                                </div>
-                            </div>
-                        </div>
 
                     <?php
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                    ?>
+                        <form action="updatedinamica.php" method="post">
+                            <div class="col-md-4 mt-4">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="https://www.xovi.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <p class="card-title">Username: <?php echo $row['usuario'] ?></p>
+                                        <p class="card-text">Correo: <?php echo $row['correo'] ?></p>
+                                        <input type="submit" id="<?=$row['idUser']?>" value="Modificar usuario">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    <?php
+                        }
                     }
-                }
-            ?>
+                    ?>
 
+
+                </div>
+            </div>
+            <!-- Selección múltiple -->
             <!-- Footer -->
             <footer class="bg-dark p-4 text-center text-white mt-5">
                 <b>Proyecto DIW Ismael</b>
