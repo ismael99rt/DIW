@@ -8,7 +8,7 @@
 			body{
 				margin:100px;
 				color:#6a6f8c;
-				background:url(https://www.hdwallpaperslife.com/wp-content/uploads/2018/06/neon_bubbles-1920x1080.jpg);
+				background:url(https://uhdwallpapers.org/uploads/converted/18/09/11/abstract-blue-red-lights-wallpaper-2560x1440_56595-mm-90.jpg);
 				font:600 16px/18px 'Open Sans',sans-serif;
 			}
 			*,:after,:before{box-sizing:border-box}
@@ -17,6 +17,7 @@
 			a{color:inherit;text-decoration:none}
 
 			.login-wrap{
+				height:300px;
 				width:100%;
 				margin:auto;
 				max-width:525px;
