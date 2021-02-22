@@ -1,0 +1,25 @@
+div{
+    color:#AAAAAA;
+    text-align: center;
+}
+.row div{
+    height: 150px;
+}
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}
+.yellow {
+    background-color: yellow;
+}
+.black{
+    background-color: black;
+}
+.blue {
+    background-color: blue;
+}
+.pink {
+    background-color: pink;
+}
