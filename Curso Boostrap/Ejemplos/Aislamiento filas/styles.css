@@ -1,0 +1,22 @@
+.vertical {
+    height: 200px;
+  }
+  
+  .row div {
+    height: 100px;
+  }
+  
+  .red  {
+    background-color: red;
+  }
+  
+  .yellow {
+    background-color: yellow;
+  }
+  
+  .blue {
+    background-color: blue;
+  }
+  .green {
+      background-color: green;
+  }
